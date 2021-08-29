@@ -150,7 +150,7 @@ body {
 }
 
 #testimonials header {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
@@ -193,14 +193,9 @@ body {
   height: auto;
   padding: 4rem 1rem;
 }
-
-.swiper-pagination-bullet-active {
-  background: var(--base-color);
-}
-
 /******* expecificações *******/
 #resumo .container {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 #resumo .title {
