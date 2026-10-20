@@ -1,0 +1,21 @@
+# docker-compose.yml — Sobe o site Nuxt (app-pedro) como estático via Nginx.
+# Mapeia a porta 82 do host (VPS Hostinger) para não conflitar com a app
+# que já roda na máquina.
+
+services:
+  site-pedro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: site-pedro:latest
+    container_name: site-pedro
+    restart: unless-stopped
+    ports:
+      # host:container — expõe na porta 82 da VPS
+      - "82:82"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:82/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

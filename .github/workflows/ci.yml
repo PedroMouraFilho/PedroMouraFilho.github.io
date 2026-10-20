@@ -1,0 +1,39 @@
+# .github/workflows/ci.yml — Integração contínua do site Nuxt (app-pedro).
+# Roda lint e typecheck a cada push. O projeto Nuxt vive na subpasta app-pedro/.
+
+name: ci
+
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    # O projeto Nuxt vive na subpasta app-pedro/
+    defaults:
+      run:
+        working-directory: app-pedro
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.3.4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: app-pedro/pnpm-lock.yaml
+
+      - name: Instalar dependências
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck

@@ -1,0 +1,34 @@
+# Saídas de build/dev do Nuxt (serão geradas dentro do container)
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Dependências (reinstaladas no container)
+node_modules
+
+# Logs
+logs
+*.log
+
+# Controle de versão e CI
+.git
+.github
+
+# Arquivos de ambiente locais
+.env
+.env.*
+!.env.example
+
+# Editores / SO
+.DS_Store
+.fleet
+.idea
+.vscode
+
+# Docker (não precisa dentro da imagem)
+Dockerfile
+.dockerignore
+docker-compose.yml
